@@ -11,16 +11,21 @@ body {
 }
 
 header {
-  position: fixed;
-  top: 20px;
-  left: 20px;
+  position: absolute;
+  top: 25px;
+  left: 25px;
 }
 
-.logo {
-  width: 40px;
-  height: 40px;
-  animation: pulse 2s infinite;
+.pulse-logo {
+  width: 36px;
+  height: 36px;
+  animation: pulse 3s infinite ease-in-out;
 }
+
+.main-logo {
+  width: 160px;
+  margin-top: 140px;
+}  
 
 @keyframes pulse {
   0% { transform: scale(1); opacity: 1; }
