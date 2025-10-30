@@ -171,22 +171,39 @@ button:hover {
 }
 
 /* =============================
-   DARK MODE SUPPORT
+   LIGHT MODE (Default)
+============================= */
+body {
+  background: #ffffff;
+  color: #000;
+}
+
+/* =============================
+   DARK MODE (Automatic)
 ============================= */
 @media (prefers-color-scheme: dark) {
   body {
-    background: #000;
-    color: #fff;
+    background: #111111; /* Elegant soft black */
+    color: #ffffff;
+  }
+
+  /* Swap to white logos for dark mode */
+  .logo-top {
+    content: url("flower_white.png");
+  }
+
+  .main-logo {
+    content: url("chema_logo_white.png");
   }
 
   input {
-    background: #111;
-    border-color: #333;
+    background: #1a1a1a;
     color: #fff;
+    border: 1px solid #333;
   }
 
-  input:focus {
-    border-color: #fff;
+  input::placeholder {
+    color: #aaa;
   }
 
   button {
@@ -195,10 +212,6 @@ button:hover {
   }
 
   button:hover {
-    background: #ccc;
-  }
-
-  .subtitle {
-    color: #bbb;
+    background: #e6e6e6;
   }
 }
