@@ -169,3 +169,36 @@ button:hover {
     width: 220px;
   }
 }
+
+/* =============================
+   DARK MODE SUPPORT
+============================= */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #000;
+    color: #fff;
+  }
+
+  input {
+    background: #111;
+    border-color: #333;
+    color: #fff;
+  }
+
+  input:focus {
+    border-color: #fff;
+  }
+
+  button {
+    background: #fff;
+    color: #000;
+  }
+
+  button:hover {
+    background: #ccc;
+  }
+
+  .subtitle {
+    color: #bbb;
+  }
+}
