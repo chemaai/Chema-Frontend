@@ -1,116 +1,132 @@
+/* =============================
+   CORE STYLES — CINEMATIC DESIGN
+============================= */
 body {
-  background-color: #ffffff;
-  font-family: 'Satoshi', 'Helvetica Neue', sans-serif;
+  background: #ffffff;
+  font-family: 'Manrope', 'Helvetica Neue', sans-serif;
   color: #000;
   margin: 0;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
-/* Header */
+/* =============================
+   LOGO & HEADER
+============================= */
 header {
-  width: 100%;
   position: absolute;
-  top: 30px;
+  top: 40px;
   left: 50px;
 }
 
 .logo-top {
-  width: 48px;
-  opacity: 0.95;
-  animation: pulse 3s infinite ease-in-out;
+  width: 52px;
+  height: 52px;
+  opacity: 0.9;
 }
 
-/* Main content */
-.center-content {
+/* =============================
+   CENTERED CONTENT
+============================= */
+.center {
   text-align: center;
-  margin-top: 20vh;
 }
 
 .main-logo {
-  width: 220px;
-  opacity: 0.95;
-  margin-bottom: 20px;
-  animation: fadeIn 1.5s ease-in forwards;
+  width: 260px;
+  margin-bottom: 25px;
+  opacity: 0;
+  animation: fadeIn 2s ease-in forwards 0.5s;
 }
 
 h1 {
-  font-size: 2.2rem;
-  font-weight: 500;
+  font-size: 2.6rem;
+  font-weight: 600;
   letter-spacing: -0.3px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px 0;
   opacity: 0;
-  animation: fadeIn 2.2s ease-in forwards;
+  animation: fadeInUp 2s ease-in forwards 1s;
 }
 
 .subtitle {
-  font-size: 1rem;
-  color: #555;
-  font-weight: 300;
-  margin-top: 8px;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #444;
   opacity: 0;
-  animation: fadeIn 3s ease-in forwards;
+  animation: fadeInUp 2.2s ease-in forwards 1.5s;
 }
 
-/* Input field centered under text */
+/* =============================
+   INPUT FIELD
+============================= */
 .input-area {
-  margin-top: 30px;
+  margin-top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
   opacity: 0;
-  animation: fadeIn 3.5s ease-in forwards;
+  animation: fadeInUp 2.2s ease-in forwards 2.2s;
 }
 
 input {
-  width: 340px;
-  padding: 14px 20px;
+  width: 400px;
+  padding: 16px 20px;
+  border-radius: 40px;
   border: 1px solid #ddd;
-  border-radius: 30px;
   font-size: 1rem;
   text-align: center;
   outline: none;
-  transition: all 0.2s ease;
+  background: #f8f8f8;
+  transition: all 0.25s ease;
 }
 
 input:focus {
   border-color: #000;
+  background: #fff;
 }
 
 button {
-  margin-left: 10px;
-  padding: 14px 26px;
-  border-radius: 30px;
-  background-color: #000;
-  color: #fff;
+  padding: 16px 32px;
+  border-radius: 40px;
   border: none;
+  background: #000;
+  color: #fff;
   font-weight: 500;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 button:hover {
-  background-color: #222;
+  background: #222;
 }
 
-/* Animation */
+/* =============================
+   ANIMATIONS
+============================= */
 @keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInUp {
   from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes pulse {
   0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 0.7; }
   100% { transform: scale(1); opacity: 1; }
 }
 
-
-
+.pulse {
+  animation: pulse 4s infinite ease-in-out;
+}
 
 
 
