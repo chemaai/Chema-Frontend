@@ -183,23 +183,23 @@ body {
 ============================= */
 @media (prefers-color-scheme: dark) {
   body {
-    background: #111111; /* Elegant soft black */
-    color: #ffffff;
+    background: #111;
+    color: #fff;
   }
 
-  /* Swap to white logos for dark mode */
-  .logo-top {
-    content: url("flower_dark.svg");
+  /* Hide light logos, show dark ones */
+  .light-logo {
+    display: none;
   }
 
-  .main-logo {
-    content: url("chema_logo_dark_v2.svg");
+  .dark-logo {
+    display: inline;
   }
 
   input {
     background: #1a1a1a;
+    border-color: #333;
     color: #fff;
-    border: 1px solid #333;
   }
 
   input::placeholder {
