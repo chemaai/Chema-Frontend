@@ -27,7 +27,6 @@ header {
   width: 52px;
   height: 52px;
   opacity: 0.9;
-  transition: opacity 0.3s ease;
 }
 
 /* =============================
@@ -76,8 +75,7 @@ h1 {
 }
 
 input {
-  width: 60%;
-  max-width: 400px;
+  width: 380px;
   padding: 16px 20px;
   border-radius: 40px;
   border: 1px solid #ddd;
@@ -130,48 +128,117 @@ button:hover {
    MOBILE RESPONSIVE DESIGN
 ============================= */
 @media (max-width: 768px) {
-  .main-logo { width: 200px; }
-  h1 { font-size: 2rem; }
-  .subtitle { font-size: 1rem; }
-  input { width: 75%; }
-  button { padding: 14px 26px; }
-}
-
-@media (max-width: 480px) {
-  .main-logo { width: 160px; }
-  h1 { font-size: 1.6rem; }
-  input { width: 80%; }
-}
-
-/* =============================
-   DARK MODE (Unified)
-============================= */
-@media (prefers-color-scheme: dark) {
   body {
-    background: #0f0f0f;
-    color: #ffffff;
-  }
-
-  .logo-top {
-    content: url("flower_dark.svg");
+    padding: 0 20px;
   }
 
   .main-logo {
-    content: url("chema_logo_dark.svg");
+    width: 200px;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+    line-height: 1.2;
   }
 
   .subtitle {
-    color: #bbb;
+    font-size: 1rem;
+  }
+
+  input {
+    width: 260px;
+    padding: 14px 18px;
+  }
+
+  button {
+    padding: 14px 26px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-logo {
+    width: 170px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  input {
+    width: 220px;
+  }
+}
+
+/* =============================
+   LIGHT MODE (Default)
+============================= */
+body {
+  background: #ffffff;
+  color: #000;
+}
+
+/* =============================
+   DARK MODE (Automatic)
+============================= */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #111;
+    color: #fff;
+  }
+
+  /* Hide light logos, show dark ones */
+  .light-logo {
+    display: none;
+  }
+
+  .dark-logo {
+    display: inline;
   }
 
   input {
     background: #1a1a1a;
-    border: 1px solid #333;
+    border-color: #333;
     color: #fff;
   }
 
   input::placeholder {
     color: #aaa;
+  }
+
+  button {
+    background: #fff;
+    color: #000;
+  }
+
+  button:hover {
+    background: #e6e6e6;
+  }
+}
+/* Default = Light mode */
+.dark-logo {
+  display: none;
+}
+
+/* Dark mode logo switch */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #0f0f0f;
+    color: #fff;
+  }
+
+  .light-logo {
+    display: none;
+  }
+
+  .dark-logo {
+    display: inline;
+  }
+
+  input {
+    background: #1a1a1a;
+    border-color: #333;
+    color: #fff;
   }
 
   button {
