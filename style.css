@@ -219,3 +219,13 @@ body {
 .dark-logo {
   display: none;
 }
+
+/* Default: Light mode visible */
+.light-logo { display: inline; }
+.dark-logo { display: none; }
+
+/* Force desktop dark mode toggle */
+@media (prefers-color-scheme: dark) {
+  .light-logo { display: none !important; }
+  .dark-logo { display: inline !important; }
+}
