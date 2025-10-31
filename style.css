@@ -175,18 +175,31 @@ button:hover {
 }
 
 /* =============================
+   LIGHT MODE (Default)
+============================= */
+body {
+  background: #fcfcfc;      /* softer white */
+  color: #111;              /* calmer black */
+  font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =============================
    DARK MODE (Automatic)
 ============================= */
 @media (prefers-color-scheme: dark) {
   body {
-    background: #0b0b0b;
-    color: #f1f1f1;
+    background: #0b0b0b;    /* soft cinematic black */
+    color: #f3f3f3;         /* not pure white—easier on eyes */
   }
 
   .subtitle {
-    color: #a1a1a1;
+    color: #a1a1a1;         /* subtle contrast for subtitles */
   }
 
+  /* Show dark logos only */
   .light-logo { display: none !important; }
   .dark-logo { display: inline !important; }
 
@@ -209,7 +222,3 @@ button:hover {
     background: #e9e9e9;
   }
 }
-
-/* Default (Light mode) */
-.dark-logo { display: none; }
-.light-logo { display: inline; }
