@@ -2,9 +2,9 @@
    CORE STYLES — CINEMATIC DESIGN
 ============================= */
 body {
-  background: #ffffff;
-  font-family: 'Manrope', 'Helvetica Neue', sans-serif;
-  color: #000;
+  background: #fafafa;
+  font-family: 'Inter Tight', 'Satoshi', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+  color: #111;
   margin: 0;
   height: 100vh;
   display: flex;
@@ -12,6 +12,8 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* =============================
@@ -26,7 +28,7 @@ header {
 .logo-top {
   width: 52px;
   height: 52px;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 /* =============================
@@ -40,23 +42,23 @@ header {
   width: 280px;
   margin-bottom: 22px;
   opacity: 0;
-  animation: fadeIn 2s ease-in forwards 0.5s, pulse 6s ease-in-out infinite;
+  animation: fadeIn 2s ease-in forwards 0.5s, pulse 8s ease-in-out infinite;
 }
 
 h1 {
-  font-size: 2.8rem;
-  font-weight: 650;
-  letter-spacing: -0.4px;
-  margin: 12px 0 6px 0;
+  font-size: 2.7rem;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  margin: 10px 0 5px 0;
   opacity: 0;
   animation: fadeInUp 2s ease-in forwards 1s;
 }
 
 .subtitle {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 400;
-  color: #444;
-  margin-top: 5px;
+  color: #555;
+  margin-top: 4px;
   opacity: 0;
   animation: fadeInUp 2.2s ease-in forwards 1.5s;
 }
@@ -75,14 +77,14 @@ h1 {
 }
 
 input {
-  width: 380px;
+  width: 360px;
   padding: 16px 20px;
-  border-radius: 40px;
+  border-radius: 50px;
   border: 1px solid #ddd;
   font-size: 1rem;
   text-align: center;
   outline: none;
-  background: #f8f8f8;
+  background: #f4f4f4;
   transition: all 0.25s ease;
 }
 
@@ -92,14 +94,16 @@ input:focus {
 }
 
 button {
-  padding: 16px 32px;
-  border-radius: 40px;
+  padding: 14px 34px;
+  border-radius: 50px;
   border: none;
-  background: #000;
+  background: #111;
   color: #fff;
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.3s ease;
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
+  transition: all 0.3s ease;
 }
 
 button:hover {
@@ -121,15 +125,7 @@ button:hover {
 
 @keyframes pulse {
   0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.85; }
-}
-
-/* =============================
-   LIGHT MODE (Default)
-============================= */
-body {
-  background: #ffffff;
-  color: #000;
+  50% { transform: scale(1.03); opacity: 0.9; }
 }
 
 /* =============================
@@ -159,8 +155,8 @@ body {
   }
 
   button {
-    padding: 14px 26px;
-    font-size: 0.95rem;
+    padding: 13px 24px;
+    font-size: 0.9rem;
   }
 }
 
@@ -183,27 +179,25 @@ body {
 ============================= */
 @media (prefers-color-scheme: dark) {
   body {
-    background: #111;
-    color: #fff;
+    background: #0b0b0b;
+    color: #f1f1f1;
   }
 
-  /* Hide light logos, show dark ones */
-  .light-logo {
-    display: none;
+  .subtitle {
+    color: #a1a1a1;
   }
 
-  .dark-logo {
-    display: inline;
-  }
+  .light-logo { display: none !important; }
+  .dark-logo { display: inline !important; }
 
   input {
     background: #1a1a1a;
     border-color: #333;
-    color: #fff;
+    color: #f4f4f4;
   }
 
   input::placeholder {
-    color: #aaa;
+    color: #888;
   }
 
   button {
@@ -212,20 +206,10 @@ body {
   }
 
   button:hover {
-    background: #e6e6e6;
+    background: #e9e9e9;
   }
 }
-/* Default = Light mode */
-.dark-logo {
-  display: none;
-}
 
-/* Default: Light mode visible */
-.light-logo { display: inline; }
+/* Default (Light mode) */
 .dark-logo { display: none; }
-
-/* Force desktop dark mode toggle */
-@media (prefers-color-scheme: dark) {
-  .light-logo { display: none !important; }
-  .dark-logo { display: inline !important; }
-}
+.light-logo { display: inline; }
