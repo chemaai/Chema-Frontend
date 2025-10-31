@@ -225,7 +225,7 @@ body {
 
 footer {
   position: fixed;
-  bottom: 15px;
+  bottom: 10px;
   left: 0;
   width: 100%;
   text-align: center;
@@ -233,6 +233,7 @@ footer {
   color: #999;
   font-weight: 400;
   letter-spacing: 0.3px;
+  z-index: 9999;
 }
 
 @media (prefers-color-scheme: dark) {
