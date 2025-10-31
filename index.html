@@ -4,25 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chema — The Intelligence That Leads</title>
+
+  <!-- Elegant modern font -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
- <header>
-  <img src="flower.svg" alt="Chema Flower Logo" class="logo-top light-logo">
-  <img src="flower_dark_.svg" alt="Chema Flower Logo" class="logo-top dark-logo">
-</header>
+  <header>
+    <!-- Flower logo auto-switch -->
+    <picture>
+      <source srcset="flower_dark_.svg" media="(prefers-color-scheme: dark)">
+      <img src="flower.svg" alt="Chema Flower Logo" class="logo-top pulse" />
+    </picture>
+  </header>
 
-<main class="center">
-  <img src="chema_logo.svg" alt="Chema Full Logo" class="main-logo light-logo pulse">
-  <img src="chema_logo_dark.svg" alt="Chema Full Logo" class="main-logo dark-logo pulse">
-  <h1>Chema — The Intelligence That Leads</h1>
-  <p class="subtitle">Awakening a new kind of mind</p>
+  <main class="center">
+    <!-- Main logo auto-switch -->
+    <picture>
+      <source srcset="chema_logo_dark.svg" media="(prefers-color-scheme: dark)">
+      <img src="chema_logo.svg" alt="Chema Full Logo" class="main-logo pulse" />
+    </picture>
 
-  <div class="input-area">
-    <input type="text" placeholder="Lead with Chema" />
-    <button>Ask</button>
-  </div>
-</main> 
+    <h1>Chema — The Intelligence That Leads</h1>
+    <p class="subtitle">Awakening a new kind of mind</p>
+
+    <div class="input-area">
+      <input type="text" placeholder="Lead with Chema" />
+      <button>Ask</button>
+    </div>
+  </main>
 </body>
 </html>
