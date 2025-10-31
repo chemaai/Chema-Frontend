@@ -220,33 +220,3 @@ body {
   display: none;
 }
 
-/* Dark mode logo switch */
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #0f0f0f;
-    color: #fff;
-  }
-
-  .light-logo {
-    display: none;
-  }
-
-  .dark-logo {
-    display: inline;
-  }
-
-  input {
-    background: #1a1a1a;
-    border-color: #333;
-    color: #fff;
-  }
-
-  button {
-    background: #fff;
-    color: #000;
-  }
-
-  button:hover {
-    background: #ddd;
-  }
-}
