@@ -2,7 +2,7 @@
   "name": "chema-frontend",
   "version": "1.0.0",
   "type": "module",
-  "dependencies": {
+  "dependencies": { 
     "@ai-sdk/openai": "latest",
     "ai": "latest"
   },
