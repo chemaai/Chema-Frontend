@@ -42,3 +42,48 @@ export default async function handler(req, res) {
     return res.status(500).json({ message: "Internal server error" });
   }
 }
+
+// ==== BASIC CHAT LOGIC ====
+
+const askBtn = document.getElementById("askBtn");
+const promptInput = document.getElementById("prompt");
+const chatLog = document.getElementById("chat-log");
+
+// Add message to chat
+function addMessage(sender, text) {
+  const msg = document.createElement("div");
+  msg.classList.add("message", sender);
+  msg.textContent = text;
+  chatLog.appendChild(msg);
+  chatLog.scrollTop = chatLog.scrollHeight;
+}
+
+// Simulate Chema typing (for now)
+function fakeChemaReply() {
+  const replies = [
+    "Interesting question — let me think.",
+    "That’s a fascinating idea, Brian.",
+    "Let's explore that deeper.",
+    "I see what you mean. Here's how I’d approach it...",
+    "Hmm, that’s a clever way to look at it."
+  ];
+  const reply = replies[Math.floor(Math.random() * replies.length)];
+  addMessage("chema", reply);
+}
+
+// Handle send event
+function handleSend() {
+  const userInput = promptInput.value.trim();
+  if (userInput === "") return;
+  
+  addMessage("user", userInput);
+  promptInput.value = "";
+  
+  // Delay before Chema replies
+  setTimeout(fakeChemaReply, 700);
+}
+
+askBtn.addEventListener("click", handleSend);
+promptInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") handleSend();
+});
