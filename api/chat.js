@@ -1,3 +1,6 @@
+const key = process.env.OPENAI_API_KEY;
+if (!key) throw new Error("Missing OPENAI_API_KEY in environment variables.");
+
 import { createOpenAI } from "@ai-sdk/openai";
 import { generateText } from "ai";
 
