@@ -1,13 +1,21 @@
 {
-  "version": 2,
+  "version": 3,
+  "buildCommand": "",
+  "installCommand": "",
+  "framework": null,
   "functions": {
-    "api/chat.js": {
+    "api/**/*.js": {
       "runtime": "nodejs18.x"
     }
   },
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "src": "/(.*)", "dest": "/index.html" }
-  ],
-  "cleanUrls": true
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
 }
