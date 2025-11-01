@@ -1,19 +1,23 @@
-import { openai } from "@ai-sdk/openai";
+import { createOpenAI } from "@ai-sdk/openai";
 import { generateText } from "ai";
+
+const openai = createOpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 export default async function handler(req, res) {
   try {
     const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
-    const message = body?.message || "Hello Chema";
+    const userMessage = body?.message || "Hello Chema";
 
     const result = await generateText({
       model: openai("gpt-4o-mini"),
-      prompt: `You are Chema, a visionary AI leader that speaks with confidence and precision. Respond to this input: ${message}`,
+      prompt: `You are Chema, an intelligent visionary AI leader. Respond clearly and thoughtfully to: ${userMessage}`,
     });
 
     res.status(200).json({ reply: result.text });
   } catch (error) {
-    console.error("Error:", error);
+    console.error("❌ Error in handler:", error);
     res.status(500).json({ error: error.message });
   }
 }
