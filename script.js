@@ -1,35 +1,28 @@
-document.getElementById("askBtn").addEventListener("click", sendPrompt);
-document.getElementById("prompt").addEventListener("keydown", (e) => {
-  if (e.key === "Enter") sendPrompt();
-});
+const input = document.getElementById("prompt");
+const button = document.getElementById("askBtn");
+const chatLog = document.getElementById("chat-log");
 
-async function sendPrompt() {
-  const input = document.getElementById("prompt");
-  const text = input.value.trim();
-  if (!text) return;
+button.addEventListener("click", async () => {
+  const userInput = input.value.trim();
+  if (!userInput) return;
 
-  appendBubble(text, "user");
+  const userBubble = document.createElement("div");
+  userBubble.className = "user-bubble";
+  userBubble.textContent = userInput;
+  chatLog.appendChild(userBubble);
+
+  const botBubble = document.createElement("div");
+  botBubble.className = "bot-bubble";
+  botBubble.textContent = "Chema is thinking…";
+  chatLog.appendChild(botBubble);
+
+  const res = await fetch("/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt: userInput }),
+  });
+
+  const data = await res.json();
+  botBubble.textContent = data.reply || "Error connecting to Chema";
   input.value = "";
-
-  try {
-    const res = await fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt: text }),
-    });
-
-    const data = await res.json();
-    appendBubble(data.reply || data.error || "No response.", "assistant");
-  } catch (err) {
-    appendBubble(`Error: ${err.message}`, "assistant");
-  }
-}
-
-function appendBubble(text, who) {
-  const chat = document.getElementById("chat-log");
-  const bubble = document.createElement("div");
-  bubble.className = `bubble ${who}`;
-  bubble.textContent = text;
-  chat.appendChild(bubble);
-  chat.scrollTo({ top: chat.scrollHeight, behavior: "smooth" });
-}
+});
