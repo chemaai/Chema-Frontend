@@ -5,7 +5,7 @@ const chatLog = document.getElementById("chat-log");
 button.addEventListener("click", async () => {
   const userInput = input.value.trim();
   if (!userInput) return;
-
+  
   const userBubble = document.createElement("div");
   userBubble.className = "user-bubble";
   userBubble.textContent = userInput;
