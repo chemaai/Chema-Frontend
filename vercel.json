@@ -5,8 +5,8 @@
     { "src": "index.html", "use": "@vercel/static" }
   ],
   "functions": {
-    "api/chat.js": {
-      "runtime": "nodejs20.x"
+    "api/**/*.js": {
+      "runtime": "nodejs18.x"
     }
   },
   "routes": [
