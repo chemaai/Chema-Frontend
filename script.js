@@ -20,12 +20,13 @@ button.addEventListener("click", async () => {
     const response = await fetch("https://chema-00yh.onrender.com/api/ask", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt: userInput })
+      body: JSON.stringify({ question: userInput })
     });
 
-    const data = await res.json();
-    botBubble.textContent = data.reply || "Error connecting to Chema";
+    const data = await response.json();
+    botBubble.textContent = data.reply || data.answer || "Error connecting to Chema";
   } catch (err) {
+    console.error("❌ Chema frontend error:", err);
     botBubble.textContent = "Server error.";
   }
 
