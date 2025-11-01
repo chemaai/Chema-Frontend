@@ -1,5 +1,3 @@
-"use server";  
-
 import OpenAI from "openai";
 
 const openai = new OpenAI({
@@ -12,7 +10,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { prompt } = await req.json ? await req.json() : req.body;
+    const { prompt } = req.body;
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
