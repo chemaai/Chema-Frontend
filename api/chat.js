@@ -1,25 +1,27 @@
 "use server";  
 
-import { createOpenAI } from "@ai-sdk/openai";
-import { generateText } from "ai";
+import OpenAI from "openai";
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+});
 
 export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
   try {
-    const openai = createOpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
+    const { prompt } = await req.json ? await req.json() : req.body;
+
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [{ role: "user", content: prompt }]
     });
 
-    const body = await req.json();
-    const userMessage = body?.message || "Hello";
-
-    const result = await generateText({
-      model: openai("gpt-4o-mini"),
-      prompt: userMessage,
-    });
-
-    res.status(200).json({ text: result.text });
+    return res.status(200).json({ response: completion.choices[0].message.content });
   } catch (error) {
-    console.error("Error in /api/chat.js:", error);
-    res.status(500).json({ error: error.message });
+    console.error("Chema backend error:", error);
+    return res.status(500).json({ error: "Error connecting to Chema" });
   }
 }
