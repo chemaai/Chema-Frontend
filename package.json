@@ -1,13 +1,11 @@
 {
   "name": "chema-frontend",
   "version": "1.0.0",
-  "type": "module",
-  "dependencies": { 
-    "@ai-sdk/openai": "latest",
-    "ai": "latest"
-  },
+  "main": "api/chat.js",
   "scripts": {
-    "build": "echo 'No build step needed'",
-    "start": "vercel dev"
+    "start": "node api/chat.js"
+  },
+  "dependencies": {
+    "openai": "^4.0.0"
   }
 }
