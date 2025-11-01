@@ -34,10 +34,16 @@
     <h1>The Intelligence That Leads</h1>
     <p class="subtitle">Now In Private Beta</p>
 
-    <div class="input-area">
-      <input type="text" placeholder="Embark Upon" />
-      <button>Go</button>
+        <div class="input-area fade-in-late">
+      <input id="prompt" type="text" placeholder="Lead with Chema..." />
+      <button id="askBtn">Ask</button>
     </div>
+
+    <div id="chat-log" class="chat-log"></div>
   </main>
+
+  <!-- Connect the front end to the logic -->
+  <script src="script.js"></script>
 </body>
 </html>
+
