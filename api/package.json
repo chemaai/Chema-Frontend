@@ -1,0 +1,13 @@
+{
+  "name": "chema-frontend",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@ai-sdk/openai": "latest",
+    "ai": "latest"
+  },
+  "scripts": {
+    "build": "echo 'No build step needed'",
+    "start": "vercel dev"
+  }
+}
