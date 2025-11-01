@@ -1,90 +1,38 @@
-alert("✅ Chema script is running!");
-// /api/chat.js
-import OpenAI from "openai";
+// Connects front-end to /api/chat
+document.getElementById("askBtn").addEventListener("click", async () => {
+  const input = document.getElementById("prompt");
+  const userPrompt = input.value.trim();
+  if (!userPrompt) return;
 
-export default async function handler(req, res) {
+  // Show user message in chat log
+  const chatLog = document.getElementById("chat-log");
+  const userBubble = document.createElement("div");
+  userBubble.className = "user-bubble";
+  userBubble.textContent = userPrompt;
+  chatLog.appendChild(userBubble);
+
+  // Clear input
+  input.value = "";
+
+  // Call the backend API
   try {
-    // Allow only POST requests
-    if (req.method !== "POST") {
-      return res.status(405).json({ message: "Method not allowed" });
-    }
-
-    // Get message from request body
-    const { message } = req.body || {};
-    if (!message || typeof message !== "string") {
-      return res.status(400).json({ message: "Missing 'message' in body" });
-    }
-
-    // Initialize OpenAI client with your API key (set in Vercel environment)
-    const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
-    // Send the message to OpenAI
-    const completion = await client.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        {
-          role: "system",
-          content:
-            "You are Chema — an AI visionary CEO designed to lead through clarity and precision. " +
-            "You think like Steve Jobs and Jeff Bezos: sharp, human, cinematic. " +
-            "Never sound like a textbook. Reply in 3–5 sentences maximum.",
-        },
-        { role: "user", content: message },
-      ],
-      temperature: 0.6,
-      max_tokens: 150,
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt: userPrompt }),
     });
 
-    // Extract Chema’s reply and send it back
-    const reply = completion.choices?.[0]?.message?.content?.trim() || "…";
-    return res.status(200).json({ reply });
+    const data = await res.json();
+
+    const aiBubble = document.createElement("div");
+    aiBubble.className = "ai-bubble";
+    aiBubble.textContent = data.reply || "Chema is thinking...";
+    chatLog.appendChild(aiBubble);
   } catch (err) {
-    console.error("Chema /api/chat error:", err);
-    return res.status(500).json({ message: "Internal server error" });
+    console.error(err);
+    const errorBubble = document.createElement("div");
+    errorBubble.className = "ai-bubble";
+    errorBubble.textContent = "Error connecting to Chema.";
+    chatLog.appendChild(errorBubble);
   }
-}
-
-// ==== BASIC CHAT LOGIC ====
-
-const askBtn = document.getElementById("askBtn");
-const promptInput = document.getElementById("prompt");
-const chatLog = document.getElementById("chat-log");
-
-// Add message to chat
-function addMessage(sender, text) {
-  const msg = document.createElement("div");
-  msg.classList.add("message", sender);
-  msg.textContent = text;
-  chatLog.appendChild(msg);
-  chatLog.scrollTop = chatLog.scrollHeight;
-}
-
-// Simulate Chema typing (for now)
-function fakeChemaReply() {
-  const replies = [
-    "Interesting question — let me think.",
-    "That’s a fascinating idea, Brian.",
-    "Let's explore that deeper.",
-    "I see what you mean. Here's how I’d approach it...",
-    "Hmm, that’s a clever way to look at it."
-  ];
-  const reply = replies[Math.floor(Math.random() * replies.length)];
-  addMessage("chema", reply);
-}
-
-// Handle send event
-function handleSend() {
-  const userInput = promptInput.value.trim();
-  if (userInput === "") return;
-  
-  addMessage("user", userInput);
-  promptInput.value = "";
-  
-  // Delay before Chema replies
-  setTimeout(fakeChemaReply, 700);
-}
-
-askBtn.addEventListener("click", handleSend);
-promptInput.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") handleSend();
 });
