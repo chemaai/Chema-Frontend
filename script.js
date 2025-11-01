@@ -16,7 +16,7 @@ button.addEventListener("click", async () => {
   botBubble.textContent = "Chema is thinking…";
   chatLog.appendChild(botBubble);
 
-  const res = await fetch("/api/chat", {
+  const res = await fetch("https://chema-00yh.onrender.com/api/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ prompt: userInput }),
