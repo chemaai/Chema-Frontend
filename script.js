@@ -1,3 +1,4 @@
+alert("✅ Chema script is running!");
 // /api/chat.js
 import OpenAI from "openai";
 
