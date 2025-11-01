@@ -1,3 +1,3 @@
-export default async function handler(req, res) {
-  return res.status(200).json({ message: "Chema Test Function Online" });
+export default async function handler(request, response) {
+  return response.status(200).json({ message: "Chema Test Function Online" });
 }
