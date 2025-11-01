@@ -1,7 +1,10 @@
 {
-  "name": "chema-ai",
+  "name": "chema-frontend",
   "version": "1.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "dependencies": {
     "openai": "^4.0.0"
   }
